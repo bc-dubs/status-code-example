@@ -14,15 +14,6 @@ const urlStruct = {
 };
 
 const onRequest = (request, response) => {
-  const parsedUrl = url.parse(request.url);
-  
-
-  const func = urlStruct[parsedUrl.pathname];
-  if (func) {
-    func(request, response, params);
-  } else {
-    urlStruct.notFound(request, response, params);
-  }
 
 };
 
