@@ -48,6 +48,9 @@
       const badRequestButton = document.querySelector("#badRequest");
       const notFoundButton = document.querySelector("#notFound");
 
+      successButton.addEventListener('click', () => sendFetch('/success'));
+      badRequestButton.addEventListener('click', () => sendFetch('/badRequest'));
+      notFoundButton.addEventListener('click', () => sendFetch('/notFound'));
       
     };
 
