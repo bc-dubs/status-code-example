@@ -15,15 +15,11 @@ const urlStruct = {
 
 const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
-  
+  const params = query.parse(parsedUrl.query); // treats all values as strings, so will need to parse numbers
+  console.log(params);
 
   const handlerFunc = urlStruct[parsedUrl.pathname];
-  if (handlerFunc) {
-    handlerFunc(request, response, params);
-  } else {
-    urlStruct.notFound(request, response, params);
-  }
-
+  (handlerFunc || urlStruct.notFound)(request, response, params);
 };
 
 http.createServer(onRequest).listen(port, () => {

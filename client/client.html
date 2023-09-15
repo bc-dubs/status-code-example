@@ -35,12 +35,29 @@
   
   <script>
     const handleResponse = (response) => {
+      const content = document.getElementById("content");
 
+      switch(response.status){
+        case 200:
+          content.innerHTML = "<b>Success</b>";
+          break;
+        case 400:
+          content.innerHTML = "<b>Bad Request</b>";
+          break;
+        case 404:
+        content.innerHTML = "<b>Not Found</b>";
+
+          break;
+        default: 
+          break;
+      }
+
+      response.json().then()
     };
     
-    const sendFetch = (url) => {
-
-      //handleResponse(response);
+    const sendFetch = async (url) => { // async = built-in system for promises
+      const response = await fetch(url); // waits for a response on line 42 before going to line 43
+      handleResponse(response);
     };
 
     const init = () => {
